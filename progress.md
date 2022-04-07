@@ -34,7 +34,7 @@ apps found on the play store with the help of different python libraries.
 Let's start the project!
 
 First of all, I am placing the data file in my git repo.
-Steps to clean the data and get it ready for the EDA
+<p> Steps to clean the data and get it ready for the EDA are as below</p>
 
 1. Creating a Spark Session
 
