@@ -119,6 +119,37 @@ Amazon Athena is a service that makes it easy to create analyze data in Amazon S
 
 ### Using Athena to interact with S3 objects
 
+## Athena Introduction
+Athena is serverless interative query system. It works on data stored in S3 and uses SQL for querying data. It also supports variety of formats like csv, json, Avro, ORC (columnar) and Parquet (columnar) which are recommenble in Bigdata storage. 
+Only pay for querying the data. It is $5 per TB data scanned. No charge for DDL and failed Queries.
+One of the best ways to save the cost, we can create Columnar formats (Parquet and ORC) and by using Partitions
+Quickly queries Unstructured, Semi Structured and Structured Data. Uses Presto (It is a distributed SQL query engine for BigData).
+Different ways to access the Amazon Athena are
+* AWS Console
+* Athena API
+* Athena CLI
+* JDBC Connection
+It integrates with AWS Glue data catalog.
+Integrates with Quicksight (BI tool) for data visualization.
+
+## Why Athena got Popular?
+
+Used by Data Analysts to query large S3 data sets
+No need to spinup servers or Hadoop Clusters
+## Athena Usescases
+Analyzing CloudTrail/CloudFront/VPC/ELB logs
+Integration through ODBC/JDBC with other visualization tool
+Ad-hoc logs analysis
+
+How to create a table in Athena?
+
+
+```CREATE EXTERNAL TABLE 'TABLE_NAME'
+('COLUMNNAME_1' DATATYPE ,------,'COLUMNNAME_N' DATATYPE) 
+LOCATION 'S3://LOCATION//'  
+```
+
+
 * Go to athena service through AWS management console & click on explore query editor to the right.
 * As shown in the below image click on create table from S3 bucket data source
 
