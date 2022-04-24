@@ -1,9 +1,12 @@
-# Amazon S3 - Interact and Encrypt
+# Amazon S3 & Athena - Interact, Encrypt and Query
 
+### Introduction
 <p>Amazon Simple Storage Service (Amazon S3) is an object storage service that offers industry-leading scalability,
 data availability, security, and performance. This means customers of all sizes and industries can use it to store and protect
 any amount of data for a range of use cases, such as data lakes, websites, cloud-native applications, backups, archive, machine learning, and analytics.
 Amazon S3 stores data for millions of customers all around the world.</p>
+How does Amazon S3 stores data?
+The Amazon S3 stores data as objects within buckets. An object consists of a file and optionally any metadata that describes that file. To store an object in Amazon S3, the user can upload the file that he/she wants to store in the bucket.
 <p>A bucket is a container (web folder) for objects (files) which performs a Persisting function 
 (Persisting refers to any time data is written to non-volatile storage, including but not limited to writing the data to back-end storage, 
 shared/cloud storage, hard drive, or storage media). Every Amazon S3 object is contained in a bucket. Buckets form the top-level namespace for Amazon S3, and bucket names are global. This means that bucket names must be unique across all AWS accounts, much like Domain Name System (DNS) domain names, not just within your own account.
@@ -47,12 +50,12 @@ In this session, let us try to understand the below.
 
 #### Creating an S3 bucket : 
 
-* S3 bucket can be created using aws s3api create-bucket —bucket bucket name command, here we are creating akshitha-datalake-assignment bucket.
+* S3 bucket can be created using aws s3api create-bucket —bucket bucket name command, here we are creating aks_s3 bucket. While choosing the region, we can select the Region closest to where our clients will be accessing or is located.
 
 ```
- Data_lake % aws s3api create-bucket --bucket akshitha-datalake-assignment --region us-east-1
+ Data_lake % aws s3api create-bucket --bucket aks_s3 --region us-east-1
 {
-    "Location": "/akshitha-datalake-assignment"
+    "Location": "/aks_s3"
 }
 ```
 
@@ -62,25 +65,25 @@ In this session, let us try to understand the below.
 
 ```
 aws s3 ls                                                                       
-2022-03-31 12:29:02 akshitha-datalake-assignment
+2022-03-31 12:29:02 aks_s3
 2022-03-31 12:28:19 akshitha-test
 ```
 
 #### Uploading CSV File into S3 Bucket
 
-* AWS S3 cp command can be used to upload files into specific s3 buckets , in the below command we are uploading files into akshitha-datalake-assignment s3 bucket.
+* AWS S3 cp command can be used to upload files into specific s3 buckets , in the below command we are uploading files into aks_s3 s3 bucket.
 
 ```
-aws s3 cp DataBreaches\(2004-2021\).csv s3://akshitha-datalake-assignment
-upload: ./DataBreaches(2004-2021).csv to s3://akshitha-datalake-assignment/DataBreaches(2004-2021).csv
+aws s3 cp DataBreaches\(2004-2021\).csv s3://aks_s3
+upload: ./DataBreaches(2004-2021).csv to s3://aks_s3/DataBreaches(2004-2021).csv
 ```
 
 #### Listing Objects in S3 Bucket
 
-* All the objects in S3 can be listed using aws s3 ls bucket-name command , here we are listing out all the objects in the akshitha-datalake-assignment  s3 bucket.
+* All the objects in S3 can be listed using aws s3 ls bucket-name command , here we are listing out all the objects in the aks_s3  s3 bucket.
 
 ```
-aws s3 ls s3://akshitha-datalake-assignment                              
+aws s3 ls s3://aks_s3                           
 2022-03-31 12:36:54      16665 DataBreaches(2004-2021).csv
 ```
 
@@ -96,7 +99,7 @@ aws s3api put-bucket-encryption --bucket akshitha-datalake-assignment --server-s
 #### Get Details of Encryption
 
 ```
-aws s3api get-bucket-encryption --bucket akshitha-datalake-assignment 
+aws s3api get-bucket-encryption --bucket aks_s3
 {
     "ServerSideEncryptionConfiguration": {
         "Rules": [
@@ -173,3 +176,4 @@ LOCATION 'S3://LOCATION//'
 * Creating IAM User/Roles : https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html#id_users_create_console
 * AWS CLI : https://docs.aws.amazon.com/cli/latest/reference/s3api/index.html
 * We  can use the Amazon [S3 Bucket Keys](https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-key.html) feature to reduce cost/scaling issues
+* https://www.youtube.com/watch?v=8VOf1PUFE0I
