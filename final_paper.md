@@ -8,6 +8,7 @@ any amount of data for a range of use cases, such as data lakes, websites, cloud
  machine learning, and analytics.
 Amazon S3 stores data for millions of customers all around the world. Data on Amazon S3 is 
 spread across multiple devices and availability zones within a region automatically.</p>
+
 #### How does Amazon S3 store data?
 The Amazon S3 stores data as objects within buckets. An object consists of a file and optionally any metadata that describes that file. 
 To store an object in Amazon S3, the user can upload the file that he/she wants to store in the bucket.
