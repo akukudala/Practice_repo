@@ -1,34 +1,28 @@
 # Amazon S3 & Athena - Interact, Encrypt and Query
 
 ### Introduction
+
 <p>Amazon Simple Storage Service (Amazon S3) is an object storage service that offers industry-leading scalability,
 data availability, security, and performance. This means customers of all sizes and industries can use it to store and protect
-any amount of data for a range of use cases, such as data lakes, websites, cloud-native applications, backups, archive, machine learning, and analytics.
-Amazon S3 stores data for millions of customers all around the world.</p>
-How does Amazon S3 stores data?
-The Amazon S3 stores data as objects within buckets. An object consists of a file and optionally any metadata that describes that file. To store an object in Amazon S3, the user can upload the file that he/she wants to store in the bucket.
+any amount of data for a range of use cases, such as data lakes, websites, cloud-native applications, backups, archive,
+ machine learning, and analytics.
+Amazon S3 stores data for millions of customers all around the world. Data on Amazon S3 is 
+spread across multiple devices and availability zones within a region automatically.</p>
+#### How does Amazon S3 store data?
+The Amazon S3 stores data as objects within buckets. An object consists of a file and optionally any metadata that describes that file. 
+To store an object in Amazon S3, the user can upload the file that he/she wants to store in the bucket.
 <p>A bucket is a container (web folder) for objects (files) which performs a Persisting function 
 (Persisting refers to any time data is written to non-volatile storage, including but not limited to writing the data to back-end storage, 
-shared/cloud storage, hard drive, or storage media). Every Amazon S3 object is contained in a bucket. Buckets form the top-level namespace for Amazon S3, and bucket names are global. This means that bucket names must be unique across all AWS accounts, much like Domain Name System (DNS) domain names, not just within your own account.
+shared/cloud storage, hard drive, or storage media). Every Amazon S3 object is contained in a bucket. 
+Buckets form the top-level namespace for Amazon S3, and bucket names are global. 
+This means that bucket names must be unique across all AWS accounts, 
+much like Domain Name System (DNS) domain names, not just within your own account.
 </p>
-Although s3 has been across the most vulnerable AWS service due to misconfiguration by the application owners, 
-if configured as per security best practices, S3 can be used as a most reliable data lake because 
-it can be easily integrated with data analytic tools (Ex: Athena, quick sight). 
-Amazon Simple Storage Service (S3) is a highly reliable web service that allows developers to securely store and retrieve 
-object data in the AWS cloud. After Amazon EC2, Amazon S3 is one of the most commonly used services. Data on Amazon S3 is 
-spread across multiple devices and availability zones within a region automatically. Amazon S3 is an object‐based storage service. 
-It is ideal for storing files but cannot be used to install an operating system; thus, it cannot provide the storage for an EC2 instance.
-Data within Amazon S3 is stored using a key‐value system, with keys being globally unique. The chapter provides some of the key concepts
-developers will encounter when working with Amazon S3: bucket, object key, object value, version ID, storage class, subresources, and object metadata. 
-It also explains how to use the AWS management console to create Amazon S3 buckets and manage the content in these buckets.
-Purpose
-The purpose of this paper is to use cloud storage in digital preservation by analyzing the pricing and data retrieval models. 
-The author recommends strategies to 
-minimize the costs and believes cloud storage is worthy of serious consideration.
+ 
 
-In this session, let us try to understand the below.
-
-* How to interact with AWS services & Amazon S3?
+### Purpose
+The paper explains how to use the AWS management console to create Amazon S3 buckets and manage the content in these buckets.
+* How to interact with AWS service Amazon S3?
 * How to enable encryption?
 * How to use Athena to interact with S3?
 
@@ -92,7 +86,7 @@ aws s3 ls s3://aks_s3
 * Data security is most important aspect when it comes to handling critical data [PII etc] , aws s3api put-bucket-encryption —bucket bucket-name command is used to enable default encryption on S3 bucket. 
 
 ```
-aws s3api put-bucket-encryption --bucket akshitha-datalake-assignment --server-side-encryption-configuration '{"Rules": [{"ApplyServerSideEncryptionByDefault": {"SSEAlgorithm": "AES256"}}]}'
+aws s3api put-bucket-encryption --bucket aks_s3 --server-side-encryption-configuration '{"Rules": [{"ApplyServerSideEncryptionByDefault": {"SSEAlgorithm": "AES256"}}]}'
 ```
 
 
