@@ -8,6 +8,14 @@ any amount of data for a range of use cases, such as data lakes, websites, cloud
  machine learning, and analytics.
 Amazon S3 stores data for millions of customers all around the world. Data on Amazon S3 is 
 spread across multiple devices and availability zones within a region automatically.</p>
+<p>Amazon S3 provides a storage management and administration capability that is highly flexible.
+S3 provides various data protection requirements which helps application owners keep their data secure at all times. But does everyone know?
+</p>
+<p>
+Although s3 has been across the most vulnerable AWS service due to misconfiguration by the application owners, 
+if configured as per security best practices, S3 can be used as a most reliable data lake because it can be easily integrated with data analytic tools (Ex: Athena, quick sight). </p>
+
+#### Let us explore how our bigdata can be securely maintained in S3. The paper explains how to how to interact with AWS service Amazon S3, create a bucket and enable encryption. We shall also go through how to use Athena to interact with S3.
 
 #### How does Amazon S3 store data?
 The Amazon S3 stores data as objects within buckets. An object consists of a file and optionally any metadata that describes that file. 
@@ -21,11 +29,37 @@ much like Domain Name System (DNS) domain names, not just within your own accoun
 </p>
  
 
-### Purpose
-The paper explains how to use the AWS management console to create Amazon S3 buckets and manage the content in these buckets.
-* How to interact with AWS service Amazon S3?
-* How to enable encryption?
-* How to use Athena to interact with S3?
+### Paper Outline
+<br>
+1. Introduction
+
+    1.1 How does Amazon S3 store data?  
+    1.2 Interacting With AWS Services
+    1.3 Interacting with S3
+    1.4 Creating an S3 bucket
+    1.5 Listing all the buckets in you AWS Accounts
+<br>
+2. Role of Big Data in Cybersecurity
+
+    2.1 Uploading CSV File into S3 Bucket
+    2.2 Listing Objects in S3 Bucket
+    
+<br>        
+3.Intrusion Detection System
+
+    3.1 Enabling Encryption on S3 Bucket & getting confirmation
+    3.2 Get Details of Encryption
+
+<br>
+4. Using Athena to interact with S3 objects 
+    4.1 Athena Introduction
+    4.2 create table
+    4.3 query the desired data
+
+<br>
+5. Conclusion
+6. Sources
+
 
 ### Interacting With AWS Services  
 
