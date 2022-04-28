@@ -14,13 +14,8 @@ S3 provides various data protection requirements which helps application owners 
 <p>
 Although s3 has been across the most vulnerable AWS service due to misconfiguration by the application owners, 
 if configured as per security best practices, S3 can be used as a most reliable data lake because it can be easily integrated with data analytic tools (Ex: Athena, quick sight). </p>
+Let us explore how our bigdata can be securely maintained in S3. The paper explains how to how to interact with AWS service Amazon S3, create a bucket and enable encryption. We shall also go through how to use Athena to interact with S3.
 
-#### Let us explore how our bigdata can be securely maintained in S3. The paper explains how to how to interact with AWS service Amazon S3, create a bucket and enable encryption. We shall also go through how to use Athena to interact with S3.
-
-
- 
-# Table of Contents
-1. [How does Amazon S3 store data?](#How-does-Amazon-S3-store-data?)
 # Table of contents
 1. [Introduction to AWS Amazon S3](#store1)
 
