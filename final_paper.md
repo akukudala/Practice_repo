@@ -8,12 +8,11 @@ data availability, security, and performance. This means customers of all sizes 
 any amount of data for a range of use cases, such as data lakes, websites, cloud-native applications, backups, archive,
  machine learning, and analytics.
 Amazon S3 stores data for millions of customers all around the world. Data on Amazon S3 is 
-spread across multiple devices and availability zones within a region automatically.</p>
-<p>Amazon S3 provides a storage management and administration capability that is highly flexible.
+spread across multiple devices and availability zones within a region automatically.
+Amazon S3 provides a storage management and administration capability that is highly flexible.
 S3 provides various data protection requirements which helps application owners keep their data secure at all times. </p>
- *But, does everyone know?*
-<p>
-Although s3 has been across the most vulnerable AWS service due to misconfiguration by the application owners, 
+_But, does everyone know?_
+<p>Although s3 has been across the most vulnerable AWS service due to misconfiguration by the application owners, 
 if configured as per security best practices, S3 can be used as a most reliable data lake because it can be easily integrated with data analytic tools (Ex: Athena, quick sight). </p>
 In this article, let us explore how our bigdata can be securely maintained in S3. This documentation has sample code which can be considered as a beginner guide to interact with AWS service Amazon S3. This article will also provide details on how to create a bucket, loading data file, to enable encryption and how to use Athena to interact with S3.
 
