@@ -1,6 +1,5 @@
 # Amazon S3 & Athena - Interact, Encrypt and Query
-
-https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.holistics.io%2Fblog%2Fcontent%2Fimages%2F2019%2F03%2Fathena-header.PNG&imgrefurl=https%3A%2F%2Fwww.holistics.io%2Fblog%2Fconnecting-aws-athena-to-query-csv-data-in-s3-with-sql-and-holistics%2F&tbnid=-DC7QILZ3LUcHM&vet=12ahUKEwjsqbWcvLz3AhVkrHIEHXe6B1AQMygKegUIARDLAQ..i&docid=QhwyYQ1mA_h_4M&w=656&h=445&q=s3%20bucket%20and%20Athena&ved=2ahUKEwjsqbWcvLz3AhVkrHIEHXe6B1AQMygKegUIARDLAQ#imgrc=I2O_2mMe9XUL0M&imgdii=F0H4Lv__oAexlM
+![](https://github.com/akukudala/homework_603/blob/main/aws-security-issues.png)
 ### Introduction
 
 <p>Amazon Simple Storage Service (Amazon S3) is an object storage service that offers industry-leading scalability,
@@ -196,3 +195,4 @@ test data
 * AWS CLI : https://docs.aws.amazon.com/cli/latest/reference/s3api/index.html
 * We  can use the Amazon [S3 Bucket Keys](https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-key.html) feature to reduce cost/scaling issues
 * https://www.youtube.com/watch?v=8VOf1PUFE0I
+* * Image https://www.scnsoft.com/blog/aws-security-issues
