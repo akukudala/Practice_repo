@@ -55,7 +55,7 @@ much like Domain Name System (DNS) domain names, not just within your own accoun
 
 ### 1.2 Interacting With AWS Services  <a name="interactaws"></a>
 
-* We can interact with AWS services either through console or through AWS CLI. In this scenario, we will interact with S3 using AWS CLI. 
+* We can interact with AWS services either through console or through AWS CLI. In this scenario, we will interact with S3 using **AWS CLI**. 
 * Below figure explains 
 
 ![](https://github.com/akukudala/homework_603/blob/main/S2Cli.png)
@@ -67,14 +67,14 @@ much like Domain Name System (DNS) domain names, not just within your own accoun
 * In AWS management console, click on IAM and create a new user
 * Add a new user with programmatic access and attach the permission policies you need for s3 and Athena
 * The policy you'll need is Amazon Athena full access or a custom policy with full
-access to Athena and lists read/write permissions to the source S3 bucket
-More information can be found in the below link:
+access to Athena and lists read/write permissions to the source S3 bucket.
+* More information can be found in the below link:
 https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html#id_users_create_console
 
 ### 1.4 Creating an S3 bucket : <a name="creates3"></a>
 
 * Once we have configured the CLI with AWS credentials, we will now create an S3 bucket. 
-* Command - aws s3api create-bucket —bucket bucket name 
+* Command - **aws s3api create-bucket —bucket bucket name**
 * Here, we are creating aks_s3 bucket. While choosing the region, we can select the Region closest to where our clients will be accessing or is located.
 
 ```
@@ -83,7 +83,7 @@ https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html#id_users_c
     "Location": "/aks_s3"
 }
 ```
-* Command - aws s3 ls can be used to list out all the buckets in our AWS account.
+* Command: **aws s3 ls** can be used to list out all the buckets in our AWS account.
 
 ```
 aws s3 ls                                                                       
@@ -93,7 +93,7 @@ aws s3 ls
 ## 2. Loading data into an S3 Bucket  <a name="bucket1"></a>
 * In this scenario, we are uploading a csv file which is taken from 
 [kaggle](https://www.kaggle.com/datasets/hishaamarmghan/list-of-top-data-breaches-2004-2021).
-* Command - aws S3 cp can be used to upload files into specific s3 buckets , in the below code we are uploading files into aks_s3 bucket which we created in the previous step.
+* Command: **aws S3 cp** can be used to upload files into specific s3 buckets , in the below code we are uploading files into aks_s3 bucket which we created in the previous step.
 ```
 aws s3 cp DataBreaches\(2004-2021\).csv s3://aks_s3
 upload: ./DataBreaches(2004-2021).csv to s3://aks_s3/DataBreaches(2004-2021).csv
@@ -101,7 +101,7 @@ upload: ./DataBreaches(2004-2021).csv to s3://aks_s3/DataBreaches(2004-2021).csv
 * We uploaded a CSV file in this example, take note of the column names and data types in the table.
 * Set the permissions and properties you need.
 * Before heading to AWS Athena from AWS management console, we shall enable the encryption.
-* All the objects in S3 can be listed using aws s3 ls bucket-name command.
+* All the objects in S3 can be listed using **aws s3 ls bucket-name** command.
 
 ```
 aws s3 ls s3://aks_s3                           
@@ -112,7 +112,7 @@ aws s3 ls s3://aks_s3
 ### 3.1 Enabling Encryption on S3 Bucket & getting confirmation <a name="encrypt2"></a>
 
 * Data security is most important aspect when it comes to handling critical data [PII etc].
-* Command - aws s3api put-bucket-encryption —bucket bucket-name is used to enable default encryption on S3 bucket. 
+* Command: **aws s3api put-bucket-encryption —bucket bucket-name** is used to enable default encryption on S3 bucket. 
 
 ```
 aws s3api put-bucket-encryption --bucket aks_s3 --server-side-encryption-configuration '{"Rules": [{"ApplyServerSideEncryptionByDefault": {"SSEAlgorithm": "AES256"}}]}'
@@ -120,7 +120,7 @@ aws s3api put-bucket-encryption --bucket aks_s3 --server-side-encryption-configu
 
 
 ### 3.2 Get Details of Encryption <a name="encrypt3"></a>
-
+* Command: **aws s3api get-bucket-encryption —bucket bucket-name**
 ```
 aws s3api get-bucket-encryption --bucket aks_s3
 {
@@ -137,19 +137,15 @@ aws s3api get-bucket-encryption --bucket aks_s3
 }
 ```
 
-
-
-## Athena 
-
-Amazon Athena is a service that makes it easy to create analyze data in Amazon S3 using open standards. Athena is serverless, so there is no infrastructure to manage, and you pay only for the queries that you run. Athena is easy to use. Simply point to your data in Amazon S3 and start querying using standard SQL. Most results are delivered within seconds. With Athena, there’s no need for complex ETL jobs to prepare your data for analysis. This makes it easy for anyone with SQL skills to quickly analyze large-scale datasets. 
-
 ## 4. Using Athena to interact with S3 objects<a name="athena1"></a>
-
-### 4.1 Athena Introduction <a name="athena2"></a>
-Athena is serverless interative query system. It works on data stored in S3 and uses SQL for querying data. It also supports variety of formats like csv, json, Avro, ORC (columnar) and Parquet (columnar) which are recommenble in Bigdata storage. 
-Only pay for querying the data. It is $5 per TB data scanned. No charge for DDL and failed Queries.
-One of the best ways to save the cost, we can create Columnar formats (Parquet and ORC) and by using Partitions
-Quickly queries Unstructured, Semi Structured and Structured Data. Uses Presto (It is a distributed SQL query engine for BigData).
+Athena is serverless interative query system. so there is no infrastructure to manage, and you pay only for the queries that you run. It also supports variety of formats like csv, json, Avro, ORC (columnar) and Parquet (columnar) which are recommenble in Bigdata storage. 
+Amazon Athena is a service that makes it easy to create and analyze data in Amazon S3 using open standards. </br>
+Athena is easy to use. Simply point to your data in Amazon S3 and start querying using SQL. Most results are delivered within seconds. With Athena, there’s no need for complex ETL jobs to prepare your data for analysis. This makes it easy for anyone with SQL skills to quickly analyze large-scale datasets. 
+### 4.1 Why Athena got Popular? <a name="athena2"></a>
+* Athena is used by Data Analysts to query large S3 data sets
+* Only pay for querying the data. It is $5 per TB data scanned. No charge for DDL and failed Queries.
+* One of the best ways to save the cost, we can create Columnar formats (Parquet and ORC) and by using Partitions.
+* Quickly queries Unstructured, Semi Structured and Structured Data. Uses Presto (It is a distributed SQL query engine for BigData).
 Different ways to access the Amazon Athena are
 * AWS Console
 * Athena API
@@ -158,14 +154,6 @@ Different ways to access the Amazon Athena are
 It integrates with AWS Glue data catalog.
 Integrates with Quicksight (BI tool) for data visualization.
 
- Why Athena got Popular?
-
-Used by Data Analysts to query large S3 data sets
-No need to spinup servers or Hadoop Clusters
- Athena Usescases
-Analyzing CloudTrail/CloudFront/VPC/ELB logs
-Integration through ODBC/JDBC with other visualization tool
-Ad-hoc logs analysis
 
 How to create a table in Athena?
 
