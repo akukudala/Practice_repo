@@ -10,34 +10,30 @@ any amount of data for a range of use cases, such as data lakes, websites, cloud
 Amazon S3 stores data for millions of customers all around the world. Data on Amazon S3 is 
 spread across multiple devices and availability zones within a region automatically.
 Amazon S3 provides a storage management and administration capability that is highly flexible.
-S3 provides various data protection requirements which helps application owners keep their data secure at all times. </p>
-_But, does everyone know?_
+S3 provides various data protection requirements which helps application owners keep their data secure at all times.</p>
+But, does everyone know?
+<br>
+<br>
 <p>Although s3 has been across the most vulnerable AWS service due to misconfiguration by the application owners, 
-if configured as per security best practices, S3 can be used as a most reliable data lake because it can be easily integrated with data analytic tools (Ex: Athena, quick sight). </p>
-In this article, let us explore how our bigdata can be securely maintained in S3. This documentation has sample code which can be considered as a beginner guide to interact with AWS service Amazon S3. This article will also provide details on how to create a bucket, loading data file, to enable encryption and how to use Athena to interact with S3.
+if configured as per security best practices, S3 can be used as a most reliable data lake because it can be easily integrated with data analytic tools (Ex: Athena, quick sight).
+In this article, let us explore how our bigdata can be securely maintained in S3. This documentation has sample code which can be considered as a beginner guide to interact with AWS service Amazon S3. This article will also provide details on how to create a bucket, loading data file, to enable encryption and how to use Athena to interact with S3.</p>
 
 # Table of contents
 
-1. [Introduction to AWS Amazon S3](#store1)
-
+ 1. [Interact with AWS Amazon S3](#store1)</br>
+ 
     1.1 [How does Amazon S3 store data?](#store)</br>
     1.2 [Interacting With AWS Services](#interactaws)</br>
     1.3 [Interacting with S3](#interacts3)</br>
     1.4 [Creating an S3 bucket](#creates3)</br>
-    1.5 [Listing all the buckets in you AWS Accounts](#listbuckets)</br>
  
- 2. [Load data into a Bucket](#bucket1)
-
-    2.1 [Uploading CSV File into S3 Bucket](#csv)</br>
-    2.2 [Listing Objects in S3 Bucket](#listbucketss3)</br>
-       
- 3. [Encrypting the data](#encrypt1)
-
+ 2. [Loading data into an S3 Bucket](#bucket1)</br>      
+ 3. [Encrypting the data](#encrypt1)</br>
+ 
     3.1 [Enabling Encryption on S3 Bucket & getting confirmation](#encrypt2)</br>
     3.2 [Get Details of Encryption](#encrypt3)</br>
-
- 4. [Using Athena to interact with S3 objects](#athena1)
-    
+ 4. [Using Athena to interact with S3 objects](#athena1) </br>
+ 
     4.1 [Athena Introduction](#athena2)</br>
     4.2 [create table](#athena3)</br>
     4.3 [query the desired data](#athena4)</br>
@@ -45,7 +41,7 @@ In this article, let us explore how our bigdata can be securely maintained in S3
  6. [Sources](#sources)</br>
 
 
-## 1. Introduction to AWS Amazon S3 <a name="store1"></a>
+## 1. Interact with AWS Amazon S3 <a name="store1"></a>
 ### 1.1 How does Amazon S3 store data? <a name="store"></a>
 The Amazon S3 stores data as objects within buckets. An object consists of a file and optionally any metadata that describes that file. 
 To store an object in Amazon S3, the user can upload the file that he/she wants to store in the bucket.
@@ -59,7 +55,8 @@ much like Domain Name System (DNS) domain names, not just within your own accoun
 
 ### 1.2 Interacting With AWS Services  <a name="interactaws"></a>
 
-* We can interact with AWS services either through console or through AWS CLI. In this scenario, we will interact with S3 using AWS CLI.console. 
+* We can interact with AWS services either through console or through AWS CLI. In this scenario, we will interact with S3 using AWS CLI. 
+* Below figure explains 
 
 ![](https://github.com/akukudala/homework_603/blob/main/S2Cli.png)
 
@@ -86,9 +83,6 @@ https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html#id_users_c
     "Location": "/aks_s3"
 }
 ```
-
-###  1.5 Listing the buckets in you AWS Accounts <a name="listbuckets"></a>
-
 * Command - aws s3 ls can be used to list out all the buckets in our AWS account.
 
 ```
@@ -96,10 +90,10 @@ aws s3 ls
 2022-03-31 12:29:02 aks_s3
 2022-03-31 12:28:19 akshitha-test
 ```
-## 2. Load data into a Bucket  <a name="bucket1"></a>
-### 2.1 Uploading CSV File into S3 Bucket <a name="csv"></a>
-
-* Command - aws S3 cp can be used to upload files into specific s3 buckets , in the below code we are uploading files into aks_s3 s3 bucket which we created in the previous step.
+## 2. Loading data into an S3 Bucket  <a name="bucket1"></a>
+* In this scenario, we are uploading a csv file which is taken from 
+[kaggle](https://www.kaggle.com/datasets/hishaamarmghan/list-of-top-data-breaches-2004-2021).
+* Command - aws S3 cp can be used to upload files into specific s3 buckets , in the below code we are uploading files into aks_s3 bucket which we created in the previous step.
 ```
 aws s3 cp DataBreaches\(2004-2021\).csv s3://aks_s3
 upload: ./DataBreaches(2004-2021).csv to s3://aks_s3/DataBreaches(2004-2021).csv
