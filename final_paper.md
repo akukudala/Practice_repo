@@ -1,5 +1,6 @@
 # Amazon S3 & Athena - Interact, Encrypt and Query
 
+https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.holistics.io%2Fblog%2Fcontent%2Fimages%2F2019%2F03%2Fathena-header.PNG&imgrefurl=https%3A%2F%2Fwww.holistics.io%2Fblog%2Fconnecting-aws-athena-to-query-csv-data-in-s3-with-sql-and-holistics%2F&tbnid=-DC7QILZ3LUcHM&vet=12ahUKEwjsqbWcvLz3AhVkrHIEHXe6B1AQMygKegUIARDLAQ..i&docid=QhwyYQ1mA_h_4M&w=656&h=445&q=s3%20bucket%20and%20Athena&ved=2ahUKEwjsqbWcvLz3AhVkrHIEHXe6B1AQMygKegUIARDLAQ#imgrc=I2O_2mMe9XUL0M&imgdii=F0H4Lv__oAexlM
 ### Introduction
 
 <p>Amazon Simple Storage Service (Amazon S3) is an object storage service that offers industry-leading scalability,
@@ -9,14 +10,15 @@ any amount of data for a range of use cases, such as data lakes, websites, cloud
 Amazon S3 stores data for millions of customers all around the world. Data on Amazon S3 is 
 spread across multiple devices and availability zones within a region automatically.</p>
 <p>Amazon S3 provides a storage management and administration capability that is highly flexible.
-S3 provides various data protection requirements which helps application owners keep their data secure at all times. But does everyone know?
-</p>
+S3 provides various data protection requirements which helps application owners keep their data secure at all times. </p>
+ *But, does everyone know?*
 <p>
 Although s3 has been across the most vulnerable AWS service due to misconfiguration by the application owners, 
 if configured as per security best practices, S3 can be used as a most reliable data lake because it can be easily integrated with data analytic tools (Ex: Athena, quick sight). </p>
-Let us explore how our bigdata can be securely maintained in S3. The paper explains how to how to interact with AWS service Amazon S3, create a bucket and enable encryption. We shall also go through how to use Athena to interact with S3.
+In this article, let us explore how our bigdata can be securely maintained in S3. This documentation has sample code which can be considered as a beginner guide to interact with AWS service Amazon S3. This article will also provide details on how to create a bucket, loading data file, to enable encryption and how to use Athena to interact with S3.
 
 # Table of contents
+
 1. [Introduction to AWS Amazon S3](#store1)
 
     1.1 [How does Amazon S3 store data?](#store)</br>
@@ -44,8 +46,8 @@ Let us explore how our bigdata can be securely maintained in S3. The paper expla
  6. [Sources](#sources)</br>
 
 
-## How does Amazon S3 store data? <a name="store1"></a>
-### How does Amazon S3 store data? <a name="store"></a>
+## 1. Introduction to AWS Amazon S3 <a name="store1"></a>
+### 1.1 How does Amazon S3 store data? <a name="store"></a>
 The Amazon S3 stores data as objects within buckets. An object consists of a file and optionally any metadata that describes that file. 
 To store an object in Amazon S3, the user can upload the file that he/she wants to store in the bucket.
 <p>A bucket is a container (web folder) for objects (files) which performs a Persisting function 
@@ -56,24 +58,28 @@ This means that bucket names must be unique across all AWS accounts,
 much like Domain Name System (DNS) domain names, not just within your own account.
 </p>
 
-### Interacting With AWS Services  <a name="interactaws"></a>
+### 1.2 Interacting With AWS Services  <a name="interactaws"></a>
 
-* Interacting with AWS services can be done in multiple ways either through console or through AWS CLI, In this scenario we will interact with S3 using AWS CLI & Athena using Management console. 
-
-
-
+* We can interact with AWS services either through console or through AWS CLI. In this scenario, we will interact with S3 using AWS CLI.console. 
 
 ![](https://github.com/akukudala/homework_603/blob/main/S2Cli.png)
 
 
-### Interacting with S3 <a name="interacts3"></a>
+### 1.3 Interacting with S3 <a name="interacts3"></a>
 
-* Before even we interact with S3 using CLI we would require IAM user credentials , to create IAM credentials we will use management console access , How to create IAM user credentials can be found here : https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html#id_users_create_console
-* Once we have configure the CLI with AWS credentials below commands can be used to interact with S3
+* Before even we interact with S3 using CLI, we would require IAM user credentials.
+* In AWS management console, click on IAM and create a new user
+* Add a new user with programmatic access and attach the permission policies you need for s3 and Athena
+* The policy you'll need is Amazon Athena full access or a custom policy with full
+access to Athena and lists read/write permissions to the source S3 bucket
+More information can be found in the below link:
+https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html#id_users_create_console
 
-### Creating an S3 bucket : <a name="creates3"></a>
+### 1.4 Creating an S3 bucket : <a name="creates3"></a>
 
-* S3 bucket can be created using aws s3api create-bucket —bucket bucket name command, here we are creating aks_s3 bucket. While choosing the region, we can select the Region closest to where our clients will be accessing or is located.
+* Once we have configured the CLI with AWS credentials, we will now create an S3 bucket. 
+* Command - aws s3api create-bucket —bucket bucket name 
+* Here, we are creating aks_s3 bucket. While choosing the region, we can select the Region closest to where our clients will be accessing or is located.
 
 ```
  Data_lake % aws s3api create-bucket --bucket aks_s3 --region us-east-1
@@ -82,45 +88,45 @@ much like Domain Name System (DNS) domain names, not just within your own accoun
 }
 ```
 
-###  Listing all the buckets in you AWS Accounts <a name="listbuckets"></a>
+###  1.5 Listing the buckets in you AWS Accounts <a name="listbuckets"></a>
 
-* aws s3 ls command can be used to list out all the buckets in our AWS account.
+* Command - aws s3 ls can be used to list out all the buckets in our AWS account.
 
 ```
 aws s3 ls                                                                       
 2022-03-31 12:29:02 aks_s3
 2022-03-31 12:28:19 akshitha-test
 ```
-## Load data into a Bucket  <a name="bucket1"></a>
-### Uploading CSV File into S3 Bucket <a name="csv"></a>
+## 2. Load data into a Bucket  <a name="bucket1"></a>
+### 2.1 Uploading CSV File into S3 Bucket <a name="csv"></a>
 
-* AWS S3 cp command can be used to upload files into specific s3 buckets , in the below command we are uploading files into aks_s3 s3 bucket.
-
+* Command - aws S3 cp can be used to upload files into specific s3 buckets , in the below code we are uploading files into aks_s3 s3 bucket which we created in the previous step.
 ```
 aws s3 cp DataBreaches\(2004-2021\).csv s3://aks_s3
 upload: ./DataBreaches(2004-2021).csv to s3://aks_s3/DataBreaches(2004-2021).csv
 ```
-
-### Listing Objects in S3 Bucket <a name="listbucketss3"></a>
-
-* All the objects in S3 can be listed using aws s3 ls bucket-name command , here we are listing out all the objects in the aks_s3  s3 bucket.
+* We uploaded a CSV file in this example, take note of the column names and data types in the table.
+* Set the permissions and properties you need.
+* Before heading to AWS Athena from AWS management console, we shall enable the encryption.
+* All the objects in S3 can be listed using aws s3 ls bucket-name command.
 
 ```
 aws s3 ls s3://aks_s3                           
 2022-03-31 12:36:54      16665 DataBreaches(2004-2021).csv
 ```
-## Encrypt the data <a name="encrypt1"></a>
+## 3. Encrypt the data <a name="encrypt1"></a>
 
-### Enabling Encryption on S3 Bucket & getting confirmation <a name="encrypt2"></a>
+### 3.1 Enabling Encryption on S3 Bucket & getting confirmation <a name="encrypt2"></a>
 
-* Data security is most important aspect when it comes to handling critical data [PII etc] , aws s3api put-bucket-encryption —bucket bucket-name command is used to enable default encryption on S3 bucket. 
+* Data security is most important aspect when it comes to handling critical data [PII etc].
+* Command - aws s3api put-bucket-encryption —bucket bucket-name is used to enable default encryption on S3 bucket. 
 
 ```
 aws s3api put-bucket-encryption --bucket aks_s3 --server-side-encryption-configuration '{"Rules": [{"ApplyServerSideEncryptionByDefault": {"SSEAlgorithm": "AES256"}}]}'
 ```
 
 
-### Get Details of Encryption <a name="encrypt3"></a>
+### 3.2 Get Details of Encryption <a name="encrypt3"></a>
 
 ```
 aws s3api get-bucket-encryption --bucket aks_s3
@@ -138,15 +144,15 @@ aws s3api get-bucket-encryption --bucket aks_s3
 }
 ```
 
-## 
+
 
 ## Athena 
 
 Amazon Athena is a service that makes it easy to create analyze data in Amazon S3 using open standards. Athena is serverless, so there is no infrastructure to manage, and you pay only for the queries that you run. Athena is easy to use. Simply point to your data in Amazon S3 and start querying using standard SQL. Most results are delivered within seconds. With Athena, there’s no need for complex ETL jobs to prepare your data for analysis. This makes it easy for anyone with SQL skills to quickly analyze large-scale datasets. 
 
-## Using Athena to interact with S3 objects<a name="athena1"></a>
+## 4. Using Athena to interact with S3 objects<a name="athena1"></a>
 
-### Athena Introduction <a name="athena2"></a>
+### 4.1 Athena Introduction <a name="athena2"></a>
 Athena is serverless interative query system. It works on data stored in S3 and uses SQL for querying data. It also supports variety of formats like csv, json, Avro, ORC (columnar) and Parquet (columnar) which are recommenble in Bigdata storage. 
 Only pay for querying the data. It is $5 per TB data scanned. No charge for DDL and failed Queries.
 One of the best ways to save the cost, we can create Columnar formats (Parquet and ORC) and by using Partitions
@@ -175,7 +181,12 @@ How to create a table in Athena?
 ('COLUMNNAME_1' DATATYPE ,------,'COLUMNNAME_N' DATATYPE) 
 LOCATION 'S3://LOCATION//'  
 ```
-### create table <a name="athena3"></a>
+
+
+Create a new database (if you have not set up one)
+Give your table a name and add your path inside the S3 bucket and folder
+Indicate data format as CSV and add the column names and data types using bulk-add option for your table.
+### 4.2 create table <a name="athena3"></a>
 
 * Go to athena service through AWS management console & click on explore query editor to the right.
 * As shown in the below image click on create table from S3 bucket data source
@@ -188,15 +199,15 @@ LOCATION 'S3://LOCATION//'
 
 ![](https://github.com/akukudala/homework_603/blob/main/Screen%20Shot%202022-03-31%20at%203.57.32%20PM.png)
 
-### query the desired data <a name="athena4"></a>
+### 4.3 query the desired data <a name="athena4"></a>
 * Once tables are created successfully we can query the desired data, below are few examples :
 
 ![](https://github.com/akukudala/homework_603/blob/main/Screen%20Shot%202022-03-31%20at%206.13.27%20PM.png)
 ![](https://github.com/akukudala/homework_603/blob/main/Screen%20Shot%202022-03-31%20at%206.15.56%20PM.png)
-## Conclusion <a name="conclusion"></a>
+## 5. Conclusion <a name="conclusion"></a>
 test data
 
-## Sources <a name="sources"></a>
+## 6. Sources <a name="sources"></a>
 
 * Amazon S3 :https://aws.amazon.com/pm/serv-s3/?trk=fecf68c9-3874-4ae2-a7ed-72b6d19c8034&sc_channel=ps&sc_campaign=acquisition&sc_medium=ACQ-P|PS-GO|Brand|Desktop|SU|Storage|S3|US|EN|Text&s_kwcid=AL!4422!3!488982706722!e!!g!!s3&ef_id=CjwKCAjwopWSBhB6EiwAjxmqDVZhQqzk-utK6i34xptNzA7MVWoo_nRYSj5jfzxiuxaCc1qt1MLokBoCMnsQAvD_BwE:G:s&s_kwcid=AL!4422!3!488982706722!e!!g!!s3
 * Athena : https://aws.amazon.com/athena/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc
