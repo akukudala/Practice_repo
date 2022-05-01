@@ -186,7 +186,8 @@ Consider the below example for to compare performance with the data processed: C
 |--------|---------|-------------------|
 |No compression, just a plain set of CSV files|Simple CSV files compressed using GZip to compress them.|We converted to the CSV file to parquet using Spark. The same process could also be done with (AWS Glue)|
 |12 ~55MB files (one for each month)|12 ~10MB Gzipped CSV files (one for each month)|12 ~8MB Parquet file using the default compression (Snappy)|
-|Total dataset size: ~666MBs|Total dataset size: ~126MBs|Total dataset size: ~84MBs |
+|Total dataset size: ~666MBs|Total dataset size: ~126MBs|Total dataset size: ~84MBs ||
+
 Thanks to Apache Parquet’s columnar format, AWS Athena is only reading the columns that are needed from the query. This reduces the query time by more than 50+% and reduces the query price by 98%.
 
 ## 6. Sources <a name="sources"></a>
