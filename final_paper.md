@@ -1,6 +1,6 @@
 # Amazon S3 & Athena - Interact, Encrypt and Query
 ![](https://github.com/akukudala/homework_603/blob/main/aws-security-issues.png)
-### Introduction
+## Introduction
 
 <p>Amazon Simple Storage Service (Amazon S3) is an object storage service that offers industry-leading scalability,
 data availability, security, and performance. This means customers of all sizes and industries can use it to store and protect
@@ -55,7 +55,7 @@ much like Domain Name System (DNS) domain names, not just within your own accoun
 ### 1.2 Interacting With AWS Services  <a name="interactaws"></a>
 
 * We can interact with AWS services either through console or through AWS CLI. In this scenario, we will interact with S3 using **AWS CLI**. 
-* Below figure explains 
+* Below figure explains the interaction with Amazon S3 bucket. We are going to create S3 bucket from AWS CLI and 
 
 ![](https://github.com/akukudala/homework_603/blob/main/S2Cli.png)
 
