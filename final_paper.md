@@ -152,7 +152,21 @@ Different ways to access the Amazon Athena are
 * JDBC Connection
 It integrates with AWS Glue data catalog.
 Integrates with Quicksight (BI tool) for data visualization.
+To create a table using the AWS Glue crawler
+Open the Athena console at https://console.aws.amazon.com/athena/.
 
+In the query editor, next to Tables and views, choose Create, and then choose AWS Glue crawler.
+
+Follow the steps on the Add crawler page of the AWS Glue console to add a crawler.
+
+For more information, see Using AWS Glue Crawlers.
+
+To create a table using the Athena create table form
+Open the Athena console at https://console.aws.amazon.com/athena/.
+
+In the query editor, next to Tables and views, choose Create, and then choose S3 bucket data.
+
+in the Create Table From S3 bucket data form, enter the the information to create your table, and then choose Create table. For more information about the fields in the form, see Adding a table using a form.
 
 How to create a table in Athena?
 
