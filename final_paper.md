@@ -193,6 +193,11 @@ Total dataset size: ~126MBs|
 Description: We converted to the CSV file to parquet using Spark. The same process could also be done with (AWS Glue)
 Files: 12 ~8MB Parquet file using the default compression (Snappy).
 Total dataset size: ~84MBs |
+| Tables   |      Are      |  Cool |
+|----------|:-------------:|------:|
+| col 1 is |  left-aligned | $1600 |
+| col 2 is |    centered   |   $12 |
+| col 3 is | right-aligned |    $1 |
 
 ## 6. Sources <a name="sources"></a>
 
