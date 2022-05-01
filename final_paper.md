@@ -181,6 +181,18 @@ As long as you authenticate your request and you have access permissions, there 
 Amazon Athena allows you to analyze data in S3 using standard SQL, without the need to manage any infrastructure. You can also access Athena via a business intelligence tool, by using the JDBC driver. Athena charges you on the amount of data scanned per query. As was evident from this article, converting your data into open source formats not only allows you to save costs, but also improves performance.
 Any SQL developer can start working on S3 bucket data through Athena. 
 We  can use the Amazon [S3 Bucket Keys](https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-key.html) feature to reduce cost/scaling issues.
+||Raw CSV	|GZip CSV |Compressed Parquet |
+
+|---|---|---|
+Description: No compression, just a plain set of CSV files
+Files: 12 ~55MB files (one for each month)
+Total dataset size: ~666MBs|
+Description: Simple CSV files compressed using GZip to compress them.
+Files: 12 ~10MB Gzipped CSV files (one for each month).
+Total dataset size: ~126MBs|
+Description: We converted to the CSV file to parquet using Spark. The same process could also be done with (AWS Glue)
+Files: 12 ~8MB Parquet file using the default compression (Snappy).
+Total dataset size: ~84MBs
 
 ## 6. Sources <a name="sources"></a>
 
