@@ -56,8 +56,9 @@ much like Domain Name System (DNS) domain names, not just within your own accoun
 
 * We can interact with AWS services either through console or through AWS CLI. In this scenario, we will interact with S3 using **AWS CLI**. 
 * Below figure explains the interaction with Amazon S3 bucket. We are going to create S3 bucket from AWS CLI and query using Athena.
-
-![](https://github.com/akukudala/homework_603/blob/main/S2Cli.png)
+<p align="center">
+  <img src="https://github.com/akukudala/homework_603/blob/main/S2Cli.png" width="700" />
+</p>
 
 
 ### 1.3 Interacting with S3 <a name="interacts3"></a>
@@ -153,8 +154,9 @@ Athena is easy to use. Simply point to your data in Amazon S3 and start querying
 * Indicate data format as CSV and add the column names and data types using bulk-add option for your table.
 * Go to athena service through AWS management console & click on explore query editor to the right.
 * As shown in the below image click on create table from S3 bucket data source.
-
-![](https://github.com/akukudala/homework_603/blob/main/Screen%20Shot%202022-03-31%20at%203.26.15%20PM.png)
+<p align="center">
+  <img src="https://github.com/akukudala/homework_603/blob/main/Screen%20Shot%202022-03-31%20at%203.26.15%20PM.png" width="450" />
+</p>
 
 * Select the input location of dataset,  this would be the **s3 location/bucket-name**. Athena provide a browse s3 functionality which simplifies locating the s3 bucket. 
 * Once all the required fields are filled out click on create table.
