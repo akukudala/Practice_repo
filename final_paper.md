@@ -55,7 +55,7 @@ much like Domain Name System (DNS) domain names, not just within your own accoun
 ### 1.2 Interacting With AWS Services  <a name="interactaws"></a>
 
 * We can interact with AWS services either through console or through AWS CLI. In this scenario, we will interact with S3 using **AWS CLI**. 
-* Below figure explains the interaction with Amazon S3 bucket. We are going to create S3 bucket from AWS CLI and 
+* Below figure explains the interaction with Amazon S3 bucket. We are going to create S3 bucket from AWS CLI and query using Athena.
 
 ![](https://github.com/akukudala/homework_603/blob/main/S2Cli.png)
 
@@ -145,61 +145,39 @@ Athena is easy to use. Simply point to your data in Amazon S3 and start querying
 * Only pay for querying the data. It is $5 per TB data scanned. No charge for DDL and failed Queries.
 * One of the best ways to save the cost, we can create Columnar formats (Parquet and ORC) and by using Partitions.
 * Quickly queries Unstructured, Semi Structured and Structured Data. Uses Presto (It is a distributed SQL query engine for BigData).
-Different ways to access the Amazon Athena are
-* AWS Console
-* Athena API
-* Athena CLI
-* JDBC Connection
-It integrates with AWS Glue data catalog.
-Integrates with Quicksight (BI tool) for data visualization.
-To create a table using the AWS Glue crawler
-Open the Athena console at https://console.aws.amazon.com/athena/.
-
-In the query editor, next to Tables and views, choose Create, and then choose AWS Glue crawler.
-
-Follow the steps on the Add crawler page of the AWS Glue console to add a crawler.
-
-For more information, see Using AWS Glue Crawlers.
-
-To create a table using the Athena create table form
-Open the Athena console at https://console.aws.amazon.com/athena/.
-
-In the query editor, next to Tables and views, choose Create, and then choose S3 bucket data.
-
-in the Create Table From S3 bucket data form, enter the the information to create your table, and then choose Create table. For more information about the fields in the form, see Adding a table using a form.
-
-How to create a table in Athena?
 
 
-```CREATE EXTERNAL TABLE 'TABLE_NAME'
-('COLUMNNAME_1' DATATYPE ,------,'COLUMNNAME_N' DATATYPE) 
-LOCATION 'S3://LOCATION//'  
-```
-
-
-Create a new database (if you have not set up one)
-Give your table a name and add your path inside the S3 bucket and folder
-Indicate data format as CSV and add the column names and data types using bulk-add option for your table.
-### 4.2 create table <a name="athena3"></a>
-
+### 4.2 Create table using the csv data<a name="athena3"></a>
+* Create a new database (if you have not set up one)
+* Give your table a name and add your path inside the S3 bucket and folder
+* Indicate data format as CSV and add the column names and data types using bulk-add option for your table.
 * Go to athena service through AWS management console & click on explore query editor to the right.
-* As shown in the below image click on create table from S3 bucket data source
+* As shown in the below image click on create table from S3 bucket data source.
 
 ![](https://github.com/akukudala/homework_603/blob/main/Screen%20Shot%202022-03-31%20at%203.26.15%20PM.png)
 
-
-* Select the input location of dataset,  this would be the s3 location/bucket-name as shown in the below image. Athena provide a browse s3 functionality which simplifies locating the s3 bucket. 
+* Select the input location of dataset,  this would be the **s3 location/bucket-name**. Athena provide a browse s3 functionality which simplifies locating the s3 bucket. 
 * Once all the required fields are filled out click on create table.
 
-![](https://github.com/akukudala/homework_603/blob/main/Screen%20Shot%202022-03-31%20at%203.57.32%20PM.png)
-
-### 4.3 query the desired data <a name="athena4"></a>
+### 4.3 Query the desired data <a name="athena4"></a>
 * Once tables are created successfully we can query the desired data, below are few examples :
+* In the below example, I am querying the counting the number of records per year using the **group by** statement along with **having** statement to apply a condition.
+ ```
+select sum(records) Total_Records, year from datalakev1 group by year having year>2015 order by year asc;
+```
 
 ![](https://github.com/akukudala/homework_603/blob/main/Screen%20Shot%202022-03-31%20at%206.13.27%20PM.png)
+
+* In the below example, I am querying the most used method for hacking. The data can be retrieved using the **group by** statement on method column. 
+```
+select count(method) count, method from datalakev1 group by method order by 1 desc;
+```
 ![](https://github.com/akukudala/homework_603/blob/main/Screen%20Shot%202022-03-31%20at%206.15.56%20PM.png)
 ## 5. Conclusion <a name="conclusion"></a>
-test data
+Amazon S3 encrypts your data at the object level as it writes it to disks in its data centers and decrypts it for you when you access it.
+As long as you authenticate your request and you have access permissions, there is no difference in the way you access encrypted or unencrypted objects.
+Amazon Athena allows you to analyze data in S3 using standard SQL, without the need to manage any infrastructure. You can also access Athena via a business intelligence tool, by using the JDBC driver. Athena charges you on the amount of data scanned per query. As was evident from this article, converting your data into open source formats not only allows you to save costs, but also improves performance.
+Any SQL developer can start working on S3 bucket data through Athena.
 
 ## 6. Sources <a name="sources"></a>
 
