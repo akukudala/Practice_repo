@@ -162,14 +162,14 @@ Athena is easy to use. Simply point to your data in Amazon S3 and start querying
 ### 4.3 Query the desired data <a name="athena4"></a>
 * Once tables are created successfully we can query the desired data, below are few examples :
 * In the below example, I am querying the counting the number of records per year using the **group by** statement along with **having** statement to apply a condition.
- ```
+ ``` sql
 select sum(records) Total_Records, year from datalakev1 group by year having year>2015 order by year asc;
-```
+``` 
 
 ![](https://github.com/akukudala/homework_603/blob/main/Screen%20Shot%202022-03-31%20at%206.13.27%20PM.png)
 
 * In the below example, I am querying the most used method for hacking. The data can be retrieved using the **group by** statement on method column. 
-```
+``` sql
 select count(method) count, method from datalakev1 group by method order by 1 desc;
 ```
 ![](https://github.com/akukudala/homework_603/blob/main/Screen%20Shot%202022-03-31%20at%206.15.56%20PM.png)
@@ -177,14 +177,14 @@ select count(method) count, method from datalakev1 group by method order by 1 de
 Amazon S3 encrypts your data at the object level as it writes it to disks in its data centers and decrypts it for you when you access it.
 As long as you authenticate your request and you have access permissions, there is no difference in the way you access encrypted or unencrypted objects.
 Amazon Athena allows you to analyze data in S3 using standard SQL, without the need to manage any infrastructure. You can also access Athena via a business intelligence tool, by using the JDBC driver. Athena charges you on the amount of data scanned per query. As was evident from this article, converting your data into open source formats not only allows you to save costs, but also improves performance.
-Any SQL developer can start working on S3 bucket data through Athena.
+Any SQL developer can start working on S3 bucket data through Athena. 
+We  can use the Amazon [S3 Bucket Keys](https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-key.html) feature to reduce cost/scaling issues.
 
 ## 6. Sources <a name="sources"></a>
 
-* Amazon S3 :https://aws.amazon.com/pm/serv-s3/?trk=fecf68c9-3874-4ae2-a7ed-72b6d19c8034&sc_channel=ps&sc_campaign=acquisition&sc_medium=ACQ-P|PS-GO|Brand|Desktop|SU|Storage|S3|US|EN|Text&s_kwcid=AL!4422!3!488982706722!e!!g!!s3&ef_id=CjwKCAjwopWSBhB6EiwAjxmqDVZhQqzk-utK6i34xptNzA7MVWoo_nRYSj5jfzxiuxaCc1qt1MLokBoCMnsQAvD_BwE:G:s&s_kwcid=AL!4422!3!488982706722!e!!g!!s3
-* Athena : https://aws.amazon.com/athena/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc
-* Creating IAM User/Roles : https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html#id_users_create_console
-* AWS CLI : https://docs.aws.amazon.com/cli/latest/reference/s3api/index.html
-* We  can use the Amazon [S3 Bucket Keys](https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-key.html) feature to reduce cost/scaling issues
-* https://www.youtube.com/watch?v=8VOf1PUFE0I
-* * Image https://www.scnsoft.com/blog/aws-security-issues
+* Amazon S3: https://aws.amazon.com/pm/serv-s3/?trk=fecf68c9-3874-4ae2-a7ed-72b6d19c8034&sc_channel=ps&sc_campaign=acquisition&sc_medium=ACQ-P|PS-GO|Brand|Desktop|SU|Storage|S3|US|EN|Text&s_kwcid=AL!4422!3!488982706722!e!!g!!s3&ef_id=CjwKCAjwopWSBhB6EiwAjxmqDVZhQqzk-utK6i34xptNzA7MVWoo_nRYSj5jfzxiuxaCc1qt1MLokBoCMnsQAvD_BwE:G:s&s_kwcid=AL!4422!3!488982706722!e!!g!!s3
+* Athena: https://aws.amazon.com/athena/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc
+* Creating IAM User/Roles: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html#id_users_create_console
+* AWS CLI: https://docs.aws.amazon.com/cli/latest/reference/s3api/index.html
+* Athena basics tutorial: https://www.youtube.com/watch?v=8VOf1PUFE0I
+* Image https://www.scnsoft.com/blog/aws-security-issues
