@@ -182,22 +182,11 @@ Amazon Athena allows you to analyze data in S3 using standard SQL, without the n
 Any SQL developer can start working on S3 bucket data through Athena. 
 We  can use the Amazon [S3 Bucket Keys](https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-key.html) feature to reduce cost/scaling issues.
 |Raw CSV	|GZip CSV |Compressed Parquet |
+|--------|---------|-------------------|
+|No compression, just a plain set of CSV files|Simple CSV files compressed using GZip to compress them.|We converted to the CSV file to parquet using Spark. The same process could also be done with (AWS Glue)|
+|12 ~55MB files (one for each month)|12 ~10MB Gzipped CSV files (one for each month)|12 ~8MB Parquet file using the default compression (Snappy)|
+|Total dataset size: ~666MBs|Total dataset size: ~126MBs|Total dataset size: ~84MBs |
 
-|---|---|---|
-Description: No compression, just a plain set of CSV files
-Files: 12 ~55MB files (one for each month)
-Total dataset size: ~666MBs|
-Description: Simple CSV files compressed using GZip to compress them.
-Files: 12 ~10MB Gzipped CSV files (one for each month).
-Total dataset size: ~126MBs|
-Description: We converted to the CSV file to parquet using Spark. The same process could also be done with (AWS Glue)
-Files: 12 ~8MB Parquet file using the default compression (Snappy).
-Total dataset size: ~84MBs |
-| Tables   |      Are      |  Cool |
-|----------|:-------------:|------:|
-| col 1 is |  left-aligned | $1600 |
-| col 2 is |    centered   |   $12 |
-| col 3 is | right-aligned |    $1 |
 
 ## 6. Sources <a name="sources"></a>
 
