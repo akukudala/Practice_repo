@@ -147,9 +147,9 @@ Authorization should be sufficiently granular to achieve the principle of least 
 
 S3 Provides wide range of capabilities to restrict Access : 
 
-* Access to S3 can be controlled using bucket policies (https://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html) and ACLs (https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html).
-* Data owners can implement role-based access control (https://en.wikipedia.org/wiki/Role-based_access_control) to enforce separation of duties. Create multiple roles for multiple functions. For example, you may define separate roles with read-only access, write-only access, etc.
-* If we want another AWS account to access S3 buckets it can done using cross-account access, use IAM to delegate access to another account (https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html).
+* Access to S3 can be controlled using [bucket policies] (https://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html) and [ACLs] (https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html).
+* Data owners can implement [role-based access control] (https://en.wikipedia.org/wiki/Role-based_access_control) to enforce separation of duties. Create multiple roles for multiple functions. For example, you may define separate roles with read-only access, write-only access, etc.
+* If we want another AWS account to access S3 buckets it can done using cross-account access, use [IAM] to delegate access to another account (https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html).
 ## 4. Using Athena to interact with S3 objects<a name="athena1"></a>
 Athena is serverless interative query system. so there is no infrastructure to manage, and you pay only for the queries that you run. It also supports variety of formats like csv, json, Avro, ORC (columnar) and Parquet (columnar) which are recommenble in Bigdata storage. 
 Amazon Athena is a service that makes it easy to create and analyze data in Amazon S3 using open standards. </br>
