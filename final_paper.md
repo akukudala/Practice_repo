@@ -109,6 +109,7 @@ aws s3 ls s3://aks_s3
 ```
 ## 3. Encrypt the data <a name="encrypt1"></a>
 
+
 ### 3.1 Enabling Encryption on S3 Bucket & getting confirmation <a name="encrypt2"></a>
 
 * Data security is most important aspect when it comes to handling critical data [PII etc].
