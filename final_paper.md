@@ -34,8 +34,8 @@ In this article, let us explore how our bigdata can be securely maintained in S3
  4. [Using Athena to interact with S3 objects](#athena1) </br>
  
     4.1 [Athena Introduction](#athena2)</br>
-    4.2 [create table](#athena3)</br>
-    4.3 [query the desired data](#athena4)</br>
+    4.2 [Create table using the csv data](#athena3)</br>
+    4.3 [Query the desired data](#athena4)</br>
  5. [Conclusion](#conclusion)</br>
  6. [Sources](#sources)</br>
 
@@ -176,6 +176,7 @@ select sum(records) Total_Records, year from datalakev1 group by year having yea
 select count(method) count, method from datalakev1 group by method order by 1 desc;
 ```
 ![](https://github.com/akukudala/homework_603/blob/main/Screen%20Shot%202022-03-31%20at%206.15.56%20PM.png)
+
 ## 5. Conclusion <a name="conclusion"></a>
 Amazon S3 encrypts your data at the object level as it writes it to disks in its data centers and decrypts it for you when you access it.
 As long as you authenticate your request and you have access permissions, there is no difference in the way you access encrypted or unencrypted objects.
