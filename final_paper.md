@@ -31,6 +31,7 @@ In this article, let us explore how our bigdata can be securely maintained in S3
  
     3.1 [Enabling Encryption on S3 Bucket & getting confirmation](#encrypt2)</br>
     3.2 [Get Details of Encryption](#encrypt3)</br>
+    3.3 [Access control - authorization](#authorization)</br>
  4. [Using Athena to interact with S3 objects](#athena1) </br>
  
     4.1 [Athena Introduction](#athena2)</br>
@@ -137,7 +138,18 @@ aws s3api get-bucket-encryption --bucket aks_s3
     }
 }
 ```
+### 3.3 Access control - authorization <a name="authorization"></a>
+When authorization is not implemented correctly and completely, a malicious user can perform actions such as read, write, modify data, access a host or call a service API for which they do not have permissions.
+If successful, this activity can expose customer data or impact service availability; resulting in a loss of customer trust.
 
+Authorization refers to the function of specifying access rights/privileges to resources, such as data or APIs. Authorization is a component of access control, to be performed after authentication.
+Authorization should be sufficiently granular to achieve the principle of least required privileges. Periodic base-lining of authorization groups, or IAM policies must be performed regularly to ensure least privilege remains in effect, group members still require access to the service and policies are current.
+
+S3 Provides wide range of capabilities to restrict Access : 
+
+* Access to S3 can be controlled using bucket policies (https://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html) and ACLs (https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html).
+* Data owners can implement role-based access control (https://en.wikipedia.org/wiki/Role-based_access_control) to enforce separation of duties. Create multiple roles for multiple functions. For example, you may define separate roles with read-only access, write-only access, etc.
+* If we want another AWS account to access S3 buckets it can done using cross-account access, use IAM to delegate access to another account (https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html).
 ## 4. Using Athena to interact with S3 objects<a name="athena1"></a>
 Athena is serverless interative query system. so there is no infrastructure to manage, and you pay only for the queries that you run. It also supports variety of formats like csv, json, Avro, ORC (columnar) and Parquet (columnar) which are recommenble in Bigdata storage. 
 Amazon Athena is a service that makes it easy to create and analyze data in Amazon S3 using open standards. </br>
