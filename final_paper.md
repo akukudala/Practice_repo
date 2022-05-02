@@ -109,7 +109,7 @@ aws s3 ls s3://aks_s3
 2022-03-31 12:36:54      16665 DataBreaches(2004-2021).csv
 ```
 ## 3. Encrypt the data <a name="encrypt1"></a>
-
+Encrypt data at rest to mitigate potential issues with data leakage. This helps reduce risk by encrypting the information rendering it unreadable to the attacker without a key. The key should be stored in a different location than the data itself.
 
 ### 3.1 Enabling Encryption on S3 Bucket & getting confirmation <a name="encrypt2"></a>
 
