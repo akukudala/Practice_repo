@@ -81,7 +81,7 @@ We have our data ready!
 ```python 
 
 from pyspark.sql import functions as F
-dffinal2.select('Category').groupBy('Category').agg(F.count('Category').alias('CategoryCount')).orderBy('CategoryCount', ascending=False).show()
+df.select('Category').groupBy('Category').agg(F.count('Category').alias('CategoryCount')).orderBy('CategoryCount', ascending=False).show()
 
 ```
 <p>
